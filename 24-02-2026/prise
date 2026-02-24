@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+     float amount;
+
+    scanf("%f", &amount);
+
+    if(amount >= 5000)
+        amount *= 0.8;
+    else if(amount >= 2000)
+        amount *= 0.9;
+
+    printf("Final Amount ₹%.2f", amount);
+
+    
+    return 0;
+}
