@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main() {
+      int n, arr[100];
+    int i = 0, drops = 0, consec = 0, crash = -1;
+    scanf("%d",&n);
+    while(i < n){
+        scanf("%d",&arr[i]);
+        i++;
+    }
+    i = 1;
+    while(i < n){
+        if(arr[i] < arr[i-1]){
+            drops++;
+            consec++;
+
+            if(consec == 3 && crash == -1)
+                crash = i + 1;
+        }
+        else
+            consec = 0;
+
+        i++;
+    }
+    if(crash == -1)
+        printf("Crash Day: Not Detected\n");
+    else
+        printf("Crash Day: %d\n", crash);
+    printf("Total Drops: %d", drops);
+    return 0;
+}
