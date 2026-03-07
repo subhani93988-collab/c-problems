@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main() {
+     int n, arr[100];
+    int i = 0, congestion = 0, streak = 0, maxStreak = 0;
+    scanf("%d",&n);
+    while(i < n){
+        scanf("%d",&arr[i]);
+        if(arr[i] > 20){
+            congestion++;
+            streak++;
+            if(streak > maxStreak)
+                maxStreak = streak;
+        }
+        else
+            streak = 0;
+        i++;
+    }
+    printf("Congestion Minutes: %d\n", congestion);
+    printf("Longest Congestion Streak: %d", maxStreak);
+    return 0;
+}
