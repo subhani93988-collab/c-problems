@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main() {
+     int fuel, n, arr[100];
+    int i = 0, stage = -1, wasted = 0;
+    scanf("%d",&fuel);
+    scanf("%d",&n);
+    while(i < n){
+        scanf("%d",&arr[i]);
+        fuel -= arr[i];
+        if(fuel < 0 && stage == -1){
+            stage = i + 1;
+            wasted = -fuel;
+        }
+        i++;
+    }
+    if(stage == -1)
+        printf("Emergency Stage: Not Occurred\nFuel Wasted: 0");
+    else{
+        printf("Emergency Stage: %d\n", stage);
+        printf("Fuel Wasted: %d", wasted);
+    }
+    return 0;
+}
