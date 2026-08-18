@@ -1,0 +1,50 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int L = sc.nextInt();
+        int R = sc.nextInt();
+        List<String> result = new ArrayList<>();
+        for (int i = L; i <= R; i++) {
+            if (isCircularPrime(i)) {
+                result.add(String.valueOf(i));
+            }
+        }
+        System.out.println(String.join(" ", result));
+    }
+    private static boolean isPrime(int n) {
+        if (n < 2) return false;
+        if (n == 2 || n == 3) return true;
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) return false;
+        }
+        return true;
+    }
+    private static boolean isCircularPrime(int n) {
+        if (!isPrime(n)) return false;
+
+        String s = String.valueOf(n);
+        int len = s.length();
+                if (len == 1) return true;
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (c == '0' || c == '2' || c == '4' || c == '5' || c == '6' || c == '8') {
+                return false;
+            }
+        }
+
+        int multiplier = (int) Math.pow(10, len - 1);
+        int num = n;
+        for (int i = 0; i < len - 1; i++) {
+            int rem = num % 10;
+            num = (num / 10) + rem * multiplier;
+            if (!isPrime(num)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
