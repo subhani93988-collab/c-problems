@@ -1,0 +1,22 @@
+char* reverseWords(char* s) {
+    int n = strlen(s);
+    char *res = (char *)malloc(n + 1);
+    int k = 0;
+    int i = n - 1;
+    while (i >= 0) {
+        while (i >= 0 && s[i] == ' ')
+            i--;
+        if (i < 0)
+            break;
+        int j = i;
+        while (j >= 0 && s[j] != ' ')
+            j--;
+        if (k > 0)
+            res[k++] = ' ';
+        for (int p = j + 1; p <= i; p++)
+            res[k++] = s[p];
+        i = j - 1;
+    }
+    res[k] = '\0';
+    return res;
+}
