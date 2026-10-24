@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNextInt()) {
+            int n = sc.nextInt();
+            double bill = 0;
+            if (n <= 200) {
+                bill = n * 0.5;
+            } else if (n <= 400) {
+                bill = n * 0.65 + 100;
+            } else if (n <= 600) {
+                bill = n * 0.80 + 200;
+            } else {
+                bill = n * 1.25 + 425;
+            }
+            System.out.printf("%.2f%n", bill);
+        }
+        
+        sc.close();
+    }
+}
